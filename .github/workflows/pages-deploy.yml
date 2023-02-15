@@ -2,8 +2,7 @@ name: "Build and Deploy"
 on:
   push:
     branches:
-      - main
-      - master
+      - gh-pages
     paths-ignore:
       - .gitignore
       - README.md
@@ -34,6 +33,7 @@ jobs:
           # submodules: true
           # If using the 'assets' git submodule from Chirpy Starter, uncomment above
           # (See: https://github.com/cotes2020/chirpy-starter/tree/main/assets)
+          ref: 'gh-pages'
 
       - name: Setup Pages
         id: pages
