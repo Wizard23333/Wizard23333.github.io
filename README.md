@@ -6,4 +6,4 @@
 
 # Blog Site
 
-Please visit [wizard23333.github.io/](https://wizard23333.github.io/)
+Please visit [wizard23333.github.io](https://wizard23333.github.io/)
