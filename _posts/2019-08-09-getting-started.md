@@ -11,6 +11,7 @@ pin: true
 
 Follow the instructions in the [Jekyll Docs](https://jekyllrb.com/docs/installation/) to complete the installation of `Ruby`, `RubyGems`, `Jekyll`, and `Bundler`. In addition, [Git](https://git-scm.com/) is also required to be installed.
 
+![2019-08-09-getting-started-2023-02-18-17-57-45](https://cdn.jsdelivr.net/gh/Wizard23333/BlogPictures/2019-08-09-getting-started-2023-02-18-17-57-45.png)
 ## Installation
 ## Test
 
