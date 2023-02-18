@@ -21,6 +21,8 @@ timezone: Asia/Shanghai
 
 title: Wizard                          # the main title
 
+application-name: Wizard's Blog
+
 tagline: Wizard's Blog   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
@@ -33,7 +35,7 @@ github:
   username: Wizard23333            # change to your github username
 
 twitter:
-  username:             # change to your twitter username
+  username: 404            # change to your twitter username
 
 social:
   # Change to your full name.
