@@ -6,7 +6,7 @@ categories: [博客搭建]
 tags: [Jekyll, GitHub Pages]
 ---
 
-> 本文所涉及开发环境默认为Macos，如在其他环境下，部分内容可能稍有差异，请自行甄别判断
+> 本文所涉及开发环境默认为macOS，如在其他环境下，部分内容可能稍有差异，请自行甄别判断
 {: .prompt-info }
 
 ## 技术选型
@@ -15,7 +15,7 @@ tags: [Jekyll, GitHub Pages]
 
 * 现成平台 VS 自己搭建
 
-  如果只是想要发布自己的某些博客文章，可以选择现成的内容发布平台，这里仅仅列举一些国内常见的平台：**知乎**、**简书**、**CSDN**、**segmentfault**、**掘金**、**博客园**、**bilibili专栏**等等。使用这些平台能够便捷的发布文章内容，也有良好的文本编辑功能，但是不提供博客的个性化功能。如果希望能够有对自己博客的完全管理能力，并且有一定的技术起初，可以选择自建博客
+  如果只是想要发布自己的某些博客文章，可以选择现成的内容发布平台，这里仅仅列举一些国内常见的平台：**知乎**、**简书**、**CSDN**、**segmentfault**、**掘金**、**博客园**、**bilibili专栏**等等。使用这些平台能够便捷的发布文章内容，也有良好的文本编辑功能，但是不提供博客的个性化功能。如果希望能够对博客有完全的管理，并且自己有一定的技术基础，可以选择自建博客
 
 * 静态页面 VS 动态页面
 
@@ -57,6 +57,43 @@ tags: [Jekyll, GitHub Pages]
 ## 本地环境配置
 
 ### Git
+
+> 网络上关于 git 的教程很多，所以这里的介绍会很简略
+> {: .prompt-tip }
+
+安装 git 主要有两种方式，可以从[官网下载安装包](https://git-scm.com/download/)，也可以使用 homebrew 安装（个人推荐，更加简洁，安装一些其他软件包也会使用到 homebrew ）：
+
+1. 首先需要[安装homebrew](https://www.jianshu.com/p/e0471aa6672d)
+
+2. 使用 homebrew 安装 git
+
+   ```console
+   # 安装最新版 git
+   $ brew install git
+   # 查看 homebrew 已安装内容
+   $ brew list
+   ```
+
+> 这里可能会因为国内网络环境的原因遇到一些问题，解决这些问题可以参考我的另一篇[博客TODO]()
+> {: .prompt-waring }
+
+### Ruby
+
+在所有的 macOS 上都会预装 ruby，但是由于系统权限原因，使用 RubyGems 安装软件包会出现如下错误：
+
+```console
+➜  ~ gem install jekyll
+Fetching google-protobuf-3.22.0-x86_64-darwin.gem
+Fetching sass-embedded-1.58.3-arm64-darwin.gem
+ERROR:  While executing gem ... (Gem::FilePermissionError)
+    You don't have write permissions for the /Library/Ruby/Gems/2.6.0 directory.
+```
+
+具体原因可以参考这篇[博客](https://www.rubyonmac.dev/you-dont-have-write-permissions-for-the-library-ruby-gems-2-6-0-directory)，主要原因是系统 ruby 不提供写入权限，同时也因为系统 ruby 的一些原因，不建议强行使用。
+
+对此，通用解决方法是使用 ruby 版本管理工具来管理包括系统 ruby 在内的多个 ruby 环境。常见的 ruby 管理工具有很多：rvm，rbenv，chruby等，这里选择了 rbenv
+
+
 
 ## 部署Github Pages
 
