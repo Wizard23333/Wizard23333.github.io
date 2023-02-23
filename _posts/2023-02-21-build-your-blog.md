@@ -1,5 +1,5 @@
 ---
-title: 使用 Jeklly + Github Pages 搭建个人博客
+title: 使用 Jeklly + Github Pages 搭建个人博客(1)
 author: wizard
 date: 2023-02-21 17:04:00 +0800
 categories: [博客搭建]
@@ -7,7 +7,7 @@ tags: [Jekyll, GitHub Pages]
 ---
 
 > 本文所涉及开发环境默认为macOS，如在其他环境下，部分内容可能稍有差异，请自行甄别判断
-{: .prompt-info }
+> {: .prompt-info }
 
 ## 技术选型
 
@@ -59,7 +59,7 @@ tags: [Jekyll, GitHub Pages]
 ### Git
 
 > 网络上关于 git 的教程很多，所以这里的介绍会很简略
-{: .prompt-tip }
+> {: .prompt-tip }
 
 安装 git 主要有两种方式，可以从[官网下载安装包](https://git-scm.com/download/)，也可以使用 homebrew 安装（个人推荐，更加简洁，安装一些其他软件包也会使用到 homebrew ）：
 
@@ -75,7 +75,7 @@ tags: [Jekyll, GitHub Pages]
    ```
 
 > 这里可能会因为国内网络环境的原因遇到一些问题，解决这些问题可以参考我的另一篇[博客TODO]()
-{: .prompt-waring }
+> {: .prompt-warning }
 
 ### Ruby
 
@@ -144,7 +144,7 @@ ERROR:  While executing gem ... (Gem::FilePermissionError)
    $ rbenv global 3.1.2
    ```
 
-### 安装 jekyll 和 bundler
+### Jekyll & Bundler
 
 ```console
 # 使用 gem 安装 jekyll 和 bundler
@@ -152,10 +152,49 @@ $ gem install jekyll bundler
 ```
 
 > 到这里为止，本地调试所需要的环境基本配置完成
-{: .prompt-tip}
+> {: .prompt-tip}
 
 ---
 
+## 选择 Jekyll 博客模版
+
+可以在 [jekyllthemes](http://jekyllthemes.org/) 上选择免费的模版，也可以自行选择其他的模版。这里我选择了这样的一个模版：[Chirpy](http://jekyllthemes.org/themes/jekyll-theme-chirpy/)，模版的项目地址：[GitHub - cotes2020/jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy/)
+
+该模版的demo地址：<https://chirpy.cotes.page/>，在其中有详细的项目的相关使用方法
+
+---
+
+> 下文步骤均以选择上述模板为前提
+> {: .prompt-warning }
+
 ## 本地运行项目
 
-## 部署到Github Pages
+1. fork 模板仓库
+   
+   > 除了 fork 之外也可以直接下载代码，或者使用 [template](https://github.com/cotes2020/chirpy-starter/)
+   
+   fork 时候需要注意将仓库名称改为 `your_github_username.github.io`
+
+2. 克隆到本地
+   
+   > 克隆之前请先完成 [GitHub ssh 配置](https://blog.csdn.net/weixin_42310154/article/details/118340458) 或者 使用 GitHub desktop (不推荐，有些git 功能无法使用) 或者使用 https（同样不推荐，每次需要输入账号密码）
+
+![Desktop View](https://cdn.jsdelivr.net/gh/Wizard23333/BlogPictures/archive_1/2023-02-21-build-your-blog-2023-02-23-14-14-21.png){:width="700" }
+
+```console
+# ！！使用自己的仓库地址！！
+$ git clone git@github.com:Wizard23333/Wizard23333.github.io.git
+```
+
+3. 运行项目
+   
+   ```console
+   $ cd your_project_path
+   $ bundle install
+   $ bundle exec jekyll server
+   ```
+
+       如果出现下面输出，说明成功运行
+![2023-02-21-build-your-blog-2023-02-23-14-36-24](https://cdn.jsdelivr.net/gh/Wizard23333/BlogPictures/archive_1/2023-02-21-build-your-blog-2023-02-23-14-36-24.png){:width="700"}
+
+    打开<http://localhost:4000/>，即可以看到运行中网页
