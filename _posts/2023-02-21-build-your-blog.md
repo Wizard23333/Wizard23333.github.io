@@ -7,7 +7,7 @@ tags: [Jekyll, GitHub Pages]
 ---
 
 > 本文所涉及开发环境默认为macOS，如在其他环境下，部分内容可能稍有差异，请自行甄别判断
-> {: .prompt-info }
+{: .prompt-info }
 
 ## 技术选型
 
@@ -17,11 +17,11 @@ tags: [Jekyll, GitHub Pages]
   
   如果只是想要发布自己的某些博客文章，可以选择现成的内容发布平台，这里仅仅列举一些国内常见的平台：**知乎**、**简书**、**CSDN**、**segmentfault**、**掘金**、**博客园**、**bilibili专栏**等等。使用这些平台能够便捷的发布文章内容，也有良好的文本编辑功能，但是不提供博客的个性化功能。如果希望能够对博客有完全的管理，并且自己有一定的技术基础，可以选择自建博客
 
-* 静态页面 VS 动态页面
+* **静态页面** VS **动态页面**
   
-  作为个人博客网站，如果提供文章访问，使用静态页面就足够了，管理起来会更加简单
+  作为个人博客网站，如果提供文章访问，使用静态页面就足够了，管理起来会更加简单，访问速度更快
 
-* 云服务器 VS Github Pages
+* **云服务器** VS **Github Pages**
   
   如果不考虑国内访问因素，Github Pages 是较优选择，主要优点如下：
   
@@ -50,7 +50,7 @@ tags: [Jekyll, GitHub Pages]
     
     使用国内网络访问速度会受限，这一点无法避免
 
-* Jekyll vs Hexo
+* **Jekyll** VS **Hexo**
   
   笔者对两种框架没有深刻研究，对于主流博客框架的各种优劣对比可自行搜索，对于在 Github Pages 部署，两者都可以实现便捷部署。
 
@@ -59,7 +59,7 @@ tags: [Jekyll, GitHub Pages]
 ### Git
 
 > 网络上关于 git 的教程很多，所以这里的介绍会很简略
-> {: .prompt-tip }
+{: .prompt-tip }
 
 安装 git 主要有两种方式，可以从[官网下载安装包](https://git-scm.com/download/)，也可以使用 homebrew 安装（个人推荐，更加简洁，安装一些其他软件包也会使用到 homebrew ）：
 
@@ -75,7 +75,7 @@ tags: [Jekyll, GitHub Pages]
    ```
 
 > 这里可能会因为国内网络环境的原因遇到一些问题，解决这些问题可以参考我的另一篇[博客TODO]()
-> {: .prompt-warning }
+{: .prompt-warning }
 
 ### Ruby
 
@@ -109,7 +109,7 @@ ERROR:  While executing gem ... (Gem::FilePermissionError)
    
    或者打开 ~./zshrc or ~./bashrc 将文本添加在配置文件最后，两者等效
    
-   ```textile
+   ```shell
    # rbenv path
    export PATH="$HOME/.rbenv/bin:$PATH"
    eval "$(rbenv init -)"
@@ -152,7 +152,7 @@ $ gem install jekyll bundler
 ```
 
 > 到这里为止，本地调试所需要的环境基本配置完成
-> {: .prompt-tip}
+{: .prompt-tip}
 
 ---
 
@@ -160,12 +160,12 @@ $ gem install jekyll bundler
 
 可以在 [jekyllthemes](http://jekyllthemes.org/) 上选择免费的模版，也可以自行选择其他的模版。这里我选择了这样的一个模版：[Chirpy](http://jekyllthemes.org/themes/jekyll-theme-chirpy/)，模版的项目地址：[GitHub - cotes2020/jekyll-theme-chirpy](https://github.com/cotes2020/jekyll-theme-chirpy/)
 
-该模版的demo地址：<https://chirpy.cotes.page/>，在其中有详细的项目的相关使用方法
+该模版的demo地址：<https://chirpy.cotes.page/>，<mark>在其中有详细的相关使用方法</mark>
 
 ---
 
 > 下文步骤均以选择上述模板为前提
-> {: .prompt-warning }
+{: .prompt-warning }
 
 ## 本地运行项目
 
@@ -178,13 +178,13 @@ $ gem install jekyll bundler
 2. 克隆到本地
    
    > 克隆之前请先完成 [GitHub ssh 配置](https://blog.csdn.net/weixin_42310154/article/details/118340458) 或者 使用 GitHub desktop (不推荐，有些git 功能无法使用) 或者使用 https（同样不推荐，每次需要输入账号密码）
-
-![Desktop View](https://cdn.jsdelivr.net/gh/Wizard23333/BlogPictures/archive_1/2023-02-21-build-your-blog-2023-02-23-14-14-21.png){:width="700" }
-
-```console
-# ！！使用自己的仓库地址！！
-$ git clone git@github.com:Wizard23333/Wizard23333.github.io.git
-```
+   
+    ![Desktop View](https://cdn.jsdelivr.net/gh/Wizard23333/BlogPictures/archive_1/2023-02-21-build-your-blog-2023-02-23-14-14-21.png){:width="700" }
+   
+   ```console
+   # ！！请修改地址为自己的项目地址！！
+   $ git clone git@github.com:Wizard23333/Wizard23333.github.io.git
+   ```
 
 3. 运行项目
    
@@ -193,8 +193,10 @@ $ git clone git@github.com:Wizard23333/Wizard23333.github.io.git
    $ bundle install
    $ bundle exec jekyll server
    ```
+   
+    如果出现下面输出，说明成功运行
+   ![2023-02-21-build-your-blog-2023-02-23-14-36-24](https://cdn.jsdelivr.net/gh/Wizard23333/BlogPictures/archive_1/2023-02-21-build-your-blog-2023-02-23-14-36-24.png){:width="700"}
+   
+   打开<http://localhost:4000/>，即可以看到运行中网页
 
-       如果出现下面输出，说明成功运行
-![2023-02-21-build-your-blog-2023-02-23-14-36-24](https://cdn.jsdelivr.net/gh/Wizard23333/BlogPictures/archive_1/2023-02-21-build-your-blog-2023-02-23-14-36-24.png){:width="700"}
-
-    打开<http://localhost:4000/>，即可以看到运行中网页
+> 下一篇文章介绍如何部署到 Github Pages
