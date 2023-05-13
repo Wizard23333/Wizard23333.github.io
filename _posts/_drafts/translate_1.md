@@ -16,7 +16,71 @@ UIKit与SwiftUI框架无缝配合，因此您可以在SwiftUI中实现UIKit应�
 
 要构建macOS应用程序，您可以使用SwiftUI创建适用于所有苹果平台的应用程序，或使用AppKit创建仅适用于Mac的应用程序。或者，您可以使用Mac Catalyst将UIKit iPad应用程序带到Mac上。
 
-> 重要信息：除非文档中另有说明，否则仅在应用程序的主线程或主调度队列中使用UIKit类。此限制特别适用于从UIResponder派生的类或以任何方式操纵应用程序用户界面的类。
+> **重要信息：**
+> 
+> 除非文档中另有说明，否则仅在应用程序的主线程或主调度队列中使用UIKit类。此限制特别适用于从UIResponder派生的类或以任何方式操纵应用程序用户界面的类。
+
+# About App Development with UIKit (使用UIKit进行应用程序开发)
+
+> 了解UIKit和Xcode为您的iOS和tvOS应用程序提供的基本支持。
+
+## 概览
+
+UIKit框架提供了构建iOS和tvOS应用程序所需的核心对象。您可以使用这些对象在屏幕上显示内容、与该内容交互以及管理与系统的交互。应用程序依赖于UIKit进行基本行为，而UIKit提供了许多方法，让您可以自定义这些行为以满足您的特定需求。
+
+> **重要信息：**
+> 
+> 您始终可以通过在苹果的集成开发环境Xcode中创建一个项目来开始iOS或tvOS应用程序的开发。如果您没有安装Xcode，可以从App Store下载它。您也可以从[developer.apple.com](https://developer.apple.com/)下载最新版本。
+
+Xcode为您创建的每个应用程序提供模板项目作为起点。例如，[图1](https://developer.apple.com/documentation/uikit/about_app_development_with_uikit#3004316)展示了使用Xcode中的Single View App模板创建的应用程序的结构。这些模板项目提供了最小的用户界面，因此您可以立即构建和运行您的项目，并在设备或模拟器上查看结果。
+
+**图1 单视图iOS应用程序的结构**
+
+<img title="" src="https://docs-assets.developer.apple.com/published/c922d75ec8/8783d1ba-8cc8-4966-afa9-4780a24cc430.png" alt="" data-align="center" width="280">
+
+## 必要资源
+
+每个UIKit应用程序都需要以下资源：
+
+* 应用程序图标（App icons）
+
+* 启动屏幕故事板（Launch screen storyboard）
+
+系统会在主屏幕、设置和需要区分您的应用程序与其他应用程序的任何地方显示您的应用程序图标。由于它在多个位置和多个设备上使用，因此您需要在Xcode项目的AppIcon图像资源中提供多个版本的应用程序图标。您的应用程序图标应该是独特的，以帮助用户在主屏幕上快速识别您的应用程序。但是，您可以根据必须提供的不同图像大小来调整图标的细节。
+
+**图2 为iOS应用程序提供图标**
+
+![](https://docs-assets.developer.apple.com/published/06fabca2b6/3004317~dark@2x.png)
+
+LaunchScreen.storyboard文件包含您的应用程序的初始用户界面，可以是闪屏或您实际界面的简化版本。当用户点击您的应用程序图标时，系统会立即显示启动屏幕，让用户知道您的应用程序正在启动。启动屏幕还为您的应用程序提供了覆盖层，因为它正在初始化自身。当您的应用程序准备好时，系统会隐藏启动屏幕并显示您的应用程序的实际界面。
+
+## 必要的应用元数据
+
+系统从应用程序包中的信息属性列表（Info.plist）文件中获取有关您的应用程序配置和功能的信息。Xcode为每个新项目模板提供了一个预配置的版本，但您可能需要在某个时候修改此文件。例如，如果您的应用程序依赖于特定的硬件或使用特定的系统框架，您可能需要将与这些功能相关的信息添加到此文件中。
+
+您可以对Info.plist文件进行的一个常见修改是声明应用程序的硬件和软件要求。这些要求是您向系统传达您的应用程序运行所需的信息的方式。例如，导航应用程序可能需要GPS硬件才能提供逐步转向指示。应用商店会阻止在不符合您的应用程序要求的设备上安装应用程序。
+
+**图3 声明应用程序的硬件和软件要求**
+
+![](https://docs-assets.developer.apple.com/published/afd6ca8355/3004318~dark@2x.png)
+
+有关您可以在`Info.plist`文件中包含的键的信息，请参阅[信息属性列表键参考](https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Introduction/Introduction.html#//apple_ref/doc/uid/TP40009247)。
+
+## UIKit应用程序的代码结构
+
+UIKit提供了许多应用程序的核心对象，包括那些与系统交互、运行应用程序的主事件循环以及在屏幕上显示内容的对象。您可以直接使用大多数这些对象，或仅进行轻微修改。知道哪些对象需要修改，以及何时修改它们，对于实现您的应用程序至关重要。
+
+UIKit应用程序的结构基于模型-视图-控制器（MVC）设计模式，其中对象根据其目的进行划分。模型对象管理应用程序的数据和业务逻辑。视图对象提供数据的可视化表示。控制器对象充当模型和视图对象之间的桥梁，在适当的时间移动数据。
+
+[图4](https://developer.apple.com/documentation/uikit/about_app_development_with_uikit#3004320)代表了UIKit应用程序的一个相当典型的结构。您提供代表应用程序数据结构的模型对象。UIKit提供大多数视图对象，虽然您可以根据需要为数据定义自定义视图。协调数据对象和UIKit视图之间的数据交换的是视图控制器和应用程序委托对象。
+
+**图4 应用程序核心对象**
+
+<img title="" src="https://docs-assets.developer.apple.com/published/4e7c26b6ad/ff7aa08f-4857-44ce-88d5-7dacbef84509.png" alt="" data-align="center" width="445">
+
+UIKit和Foundation框架提供了许多基本类型，用于定义应用程序的模型对象。UIKit提供了一个[`UIDocument`](https://developer.apple.com/documentation/uikit/uidocument)对象，用于组织属于基于磁盘的文件中的数据结构。Foundation框架定义了表示字符串、数字、数组和其他数据类型的基本对象。[Swift标准库](https://developer.apple.com/documentation/swift/swift-standard-library)提供了许多与Foundation框架中可用的相同类型。
+
+UIKit提供了大多数控制器和视图层中的对象。具体来说，UIKit定义了[`UIView`](https://developer.apple.com/documentation/uikit/uiview)类，通常负责在屏幕上显示您的内容。(您也可以使用Metal和其他系统框架直接将内容呈现到屏幕上。) [`UIApplication`](https://developer.apple.com/documentation/uikit/uiapplication)对象运行您的应用程序的主事件循环并管理您的应用程序的整个生命周期。
 
 # Protecting the User’s Privacy (保护用户隐私)
 
@@ -66,7 +130,106 @@ UIKit与SwiftUI框架无缝配合，因此您可以在SwiftUI中实现UIKit应�
 
 如果您的应用程序支持音频输入，请仅在实际准备开始录制时配置音频会话以进行录制。如果您不打算立即录制，请勿在启动时配置音频会话以进行录制。当应用程序配置其音频会话进行录制时，系统会向用户发出警报，并为用户提供禁用应用程序录制的选项。
 
-# 加密应用程序文件
+# Requesting access to protected resources (请求访问受保护的资源)
+
+> 请提供一个目的字符串，以向用户解释为什么您需要访问他们设备上的受保护资源。
+
+## 概览
+
+现代设备收集并存储了关于使用它们的人的大量敏感信息。许多应用程序依赖于此类数据及生成它的设备硬件来执行有用的工作。例如，导航应用程序需要一个人的GPS坐标来在地图上定位该人。但是，并不是所有应用程序都需要访问所有数据。同样的导航应用程序不需要访问一个人的健康历史记录、相机接口或蓝牙外设。
+
+确保您的应用程序只访问它需要执行其工作的内容。为了支持这一原则，苹果的操作系统默认限制对受保护数据和资源的访问。应用程序可以逐个案例地请求访问，同时提供为何需要访问的说明。使用应用程序的人决定是否授予或拒绝请求。
+
+> **提示信息：**
+> 
+> 除了向用户请求访问资源的权限外，在某些情况下，您还需要通过向应用程序添加授权来单独声明您的意图，如[授权](https://developer.apple.com/documentation/bundleresources/entitlements)所述。
+
+## 提供目的字符串
+
+当您的应用程序首次尝试访问受保护资源时，系统会提示应用程序使用者授予权限。以下是一个示例，一个名为FoodDeliveryApp的iOS应用程序，提供食品送货服务，生成了一个提示请求访问用户的位置：
+
+<img title="" src="https://docs-assets.developer.apple.com/published/463f770ecd/renderedDark2x-1667327329.png" alt="" data-align="center" width="265">
+
+如果授权被允许，系统会记住使用者的选择，并且不会再次提示。如果使用者拒绝了授权，访问尝试将以特定于资源的方式失败。对于访问位置数据的特定情况，用户可以通过点击“仅允许一次”来允许仅在一次会话中使用位置数据。
+
+系统会自动生成提示的标题，其中包括您的应用程序的名称。您需要提供一个称为“目的字符串”或“用途说明”的消息 - 在本例中是“您的位置允许您查看送餐范围内的餐厅。” - 以指示您的应用程序需要访问的原因。准确而简洁地向用户解释为什么您的应用程序需要访问敏感数据通常需要一句完整的句子，这有助于用户做出知情决策并提高他们授权的几率。
+
+您可以通过为添加到应用程序的[`Information Property List`](https://developer.apple.com/documentation/bundleresources/information_property_list)文件的特定于资源的键设置字符串值来提供目的字符串。例如，上面图像中的消息是与[`NSLocationWhenInUseUsageDescription`](https://developer.apple.com/documentation/bundleresources/information_property_list/nslocationwheninuseusagedescription)键相关联的字符串。使用Xcode中的属性列表编辑器修改您的`Info.plist`文件。
+
+<img src="https://docs-assets.developer.apple.com/published/4ec12be08e/renderedDark2x-1667327328.png" title="" alt="" data-align="center">
+
+如果您的应用程序使用受保护资源，请始终在Info.plist文件中提供有效的目的字符串。如果您没有提供有效的目的字符串，访问资源的尝试将失败，甚至可能导致您的应用程序崩溃。
+
+如果您的应用程序支持多个语言环境，请在Info.plist文件中提供目的字符串的本地化版本，并将本地化字符串放置在每个语言环境的InfoPlist.strings文件中以进行支持。
+
+## 遵守目的字符串的要求
+
+为了向用户提供有用、简洁的关于为什么请求访问受保护资源的信息，请确保您提供的每个目的字符串都是有效的，检查以下内容：
+
+* 目的字符串不为空，并且不仅由空格字符组成。
+
+* 目的字符串长度小于4,000字节。典型的目的字符串是一句完整的句子，但您可以提供附加信息以帮助用户做出正确的有关共享个人信息的决定。
+
+* 目的字符串具有相应键所需的正确类型，通常是字符串。
+
+* 目的字符串提供的描述准确、有意义且具体，说明应用程序为何需要访问受保护资源。
+
+请遵守这些要求，对`Info.plist`文件和特定于语言环境的`InfoPlist.strings`文件中的每个目的字符串都要进行检查。
+
+App Review会检查是否使用了受保护资源，并拒绝包含未经目的字符串授权的访问这些资源的代码的应用程序。例如，访问位置的应用程序可能会从App Review接收到有关需要存在[`NSLocationWhenInUseUsageDescription`](https://developer.apple.com/documentation/bundleresources/information_property_list/nslocationwheninuseusagedescription)键的要求的以下信息：
+
+```textile
+ITMS-90683: Missing purpose string in Info.plist. 
+Your app’s code references one or more APIs that access sensitive user 
+data, or the app has one or more entitlements that permit such access. 
+The Info.plist file for the "{app-bundle-path}" bundle should contain a 
+NSLocationWhenInUseUsageDescription key with a user-facing purpose string 
+explaining clearly and completely why your app needs the data.
+If you’re using external libraries or SDKs, they may reference APIs that 
+require a purpose string. While your app might not use these APIs, a 
+purpose string is still required. For details, visit: 
+https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources.
+
+ITMS-90683: Info.plist文件中缺少目的字符串。
+您的应用程序代码引用了一个或多个访问敏感用户数据的API，或应用程序具有一个或多个允许此类访问的授权。
+"{app-bundle-path}"包的Info.plist文件应包含一个NSLocationWhenInUseUsageDescription键，
+其中包含一个面向用户的目的字符串，清楚而完整地解释您的应用程序为何需要这些数据。
+如果您正在使用外部库或SDK，它们可能引用需要目的字符串的API。
+尽管您的应用程序可能不使用这些API，但仍需要提供目的字符串。有关详细信息，请访问：
+https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources。
+```
+
+要解决此问题，请提供一个目的字符串，说明应用程序为何需要访问这些敏感信息，或删除访问该资源的代码。
+
+> **提示：**
+> 
+> 如果您正在使用外部库或SDK，则它们可能引用需要目的字符串的API。尽管您的应用程序可能不使用这些API，但仍需要提供目的字符串以供App Review审核。您可以联系库或SDK的开发人员，请求有关开发人员使用的受保护资源及其目的的信息，或请求开发人员发布不包含这些API的代码版本。您负责所有受保护资源的访问，包括外部SDK和库的访问。
+
+## 检查授权
+
+许多提供访问受保护资源的系统框架都有专用的API，用于检查和请求授权以使用这些资源。该模型允许您根据当前访问权限调整应用程序的行为。例如，如果用户拒绝了您的应用程序的权限，您可以从用户界面中删除相关元素。
+
+由于用户可以随时使用“设置”更改授权状态，请在访问受保护资源之前始终检查其特征的授权状态。在没有专用API的情况下，准备您的应用程序以优雅地处理访问失败。
+
+## 重置授权访问
+
+当您的应用程序在第一次尝试后尝试访问受保护资源时，系统将记住用户的权限选择并不会再次提示。要再次提示用户，您需要在设备或系统上重置对这些资源的访问。
+
+要在iOS应用程序中重置对受保护资源的权限访问，请在设备上点击“设置”>“通用”>“还原”>“重置位置与隐私”。
+
+> **重要信息：**
+> 
+> 使用“重置位置与隐私”将重置您设备上所有服务的位置和隐私设置。使用“重置位置与隐私”将重置您设备上所有服务的位置和隐私设置。
+
+要在 macOS 应用程序中重置特定服务的权限，请在终端中运行`tccutil reset <服务名称>`命令。例如，要重置 AppleEvents 的所有权限，请输入：
+
+```shellsession
+$ tccutil reset AppleEvents
+```
+
+这个命令会重置所有使用受保护资源的应用程序的授权访问。您也可以单独指定摄像头、日历、提醒事项或其他服务来重置它们。
+
+# Encrypting Your App’s Files (加密应用程序文件)
 
 > 通过磁盘加密来保护iOS中的用户数据。
 
