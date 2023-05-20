@@ -1,5 +1,5 @@
 ---
-title: 文档翻译（2）——使用UIKit进行应用程序开发
+title: UIKit文档翻译（2）——About App Development with UIKit
 author: wizard
 date: 2023-05-18 14:03:00 +0800
 categories: [文档翻译]

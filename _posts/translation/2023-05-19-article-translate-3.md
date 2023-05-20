@@ -1,5 +1,5 @@
 ---
-title: 文档翻译（3）——保护用户隐私
+title: UIKit文档翻译（3）——Protecting the User’s Privacy
 author: wizard
 date: 2023-05-19 13:05:00 +0800
 categories: [文档翻译]
