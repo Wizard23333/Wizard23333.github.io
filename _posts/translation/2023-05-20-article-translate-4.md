@@ -29,7 +29,7 @@ tags: [文档翻译, UIKit]
 
 ## 提供目的字符串
 
-当您的应用程序首次尝试访问受保护资源时，系统会提示应用程序使用者授予权限。以下是一个示例，一个名为FoodDeliveryApp的iOS应用程序，提供食品送货服务，生成了一个提示请求访问用户的位置：
+当您的应用程序首次尝试访问受保护资源时，系统会提示应用程序使用者授予权限。以下是一个示例，一个名为FoodDeliveryApp的iOS应用程序，提供食品送货服务，生成了一个请求访问用户的位置的提示：
 
 <img title="" src="https://docs-assets.developer.apple.com/published/463f770ecd/renderedDark2x-1667327329.png" alt="" data-align="center" width="234">
 
