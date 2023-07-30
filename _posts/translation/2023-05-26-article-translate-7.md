@@ -8,7 +8,7 @@ tags: [文档翻译, UIKit]
 ---
 
 > 本文使用chatGPT（gpt-3.5-turbo）翻译，加以部分人工润色排版，如有问题请在评论区指出
-> {: .prompt-info }
+{: .prompt-info }
 
 原文地址：[链接](https://developer.apple.com/documentation/uikit/app_and_environment/managing_your_app_s_life_cycle)
 
@@ -27,8 +27,7 @@ tags: [文档翻译, UIKit]
 * 在 iOS 12 及更早版本中，使用[`UIApplicationDelegate`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate)对象来响应生命周期事件。
 
 > 如果您在应用程序中启用场景支持，在 iOS 13 及更高版本中 iOS 总是使用您的场景委托对象（scene delegates）。在 iOS 12 及更早版本中，系统使用您的应用委托对象（app delegate）。
-> 
-> {: .prompt-info }
+{: .prompt-info }
 
 ## 响应基于场景的生命周期事件
 
