@@ -29,7 +29,7 @@ tags: [文档翻译, UIKit]
 * 设置用户帐户或收集其他所需数据。
   
 
-在您的应用程序委托的 [`application(_:willFinishLaunchingWithOptions:)`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623032-application) 或 [`application(_:didFinishLaunchingWithOptions:)`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application) 方法中执行任何一次性任务。不要阻塞应用程序的主线程用于不需要用户输入的任务。相反地，使用调度队列异步地启动任务，并在应用程序完成启动时让它们在后台运行。对于需要用户输入的任务，请在 `application(_:didFinishLaunchingWithOptions:)` 方法中对用户界面进行所有更改。
+在您的应用程序委托的 [`application(_:willFinishLaunchingWithOptions:)`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623032-application) 或 [`application(_:didFinishLaunchingWithOptions:)`](https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1622921-application) 方法中执行任何一次性任务。不要在主线程上执行不需要用户输入的任务，这样会阻塞主线程。相反地，使用调度队列异步地启动任务，并在应用程序完成启动时让它们在后台运行。对于需要用户输入的任务，请在 `application(_:didFinishLaunchingWithOptions:)` 方法中对用户界面进行所有更改。
 
 ## 将文件安装在适当的位置
 
