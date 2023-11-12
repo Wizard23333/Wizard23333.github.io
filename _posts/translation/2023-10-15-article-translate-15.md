@@ -23,18 +23,18 @@ class UIStackView : UIView
 
 ## 概览
 
-堆栈视图（Stack View）可以利用自动布局的强大功能，创建动态适应设备方向、屏幕尺寸和可用空间变化的用户界面。堆栈视图管理其[`arrangedSubviews`](https://developer.apple.com/documentation/uikit/uistackview/1616232-arrangedsubviews)属性中所有视图的布局。这些视图根据它们在[`arrangedSubviews`](https://developer.apple.com/documentation/uikit/uistackview/1616232-arrangedsubviews)数组中的顺序，在堆栈视图的轴线上进行排列。具体的布局方式取决于堆栈视图的[`axis`](https://developer.apple.com/documentation/uikit/uistackview/1616223-axis)、[`distribution`](https://developer.apple.com/documentation/uikit/uistackview/1616233-distribution)、[`alignment`](https://developer.apple.com/documentation/uikit/uistackview/1616243-alignment)、[`spacing`](https://developer.apple.com/documentation/uikit/uistackview/1616225-spacing)和其他属性。
+堆栈视图（Stack View）可以利用自动布局的强大功能，创建能动态适应设备方向、屏幕尺寸以及可用空间变化的用户界面。堆栈视图能管理其[`arrangedSubviews`](https://developer.apple.com/documentation/uikit/uistackview/1616232-arrangedsubviews)属性中所有视图的布局。这些视图根据它们在[`arrangedSubviews`](https://developer.apple.com/documentation/uikit/uistackview/1616232-arrangedsubviews)数组中的顺序，在堆栈视图的轴线上进行排列。具体的布局方式取决于堆栈视图的[`axis`](https://developer.apple.com/documentation/uikit/uistackview/1616223-axis)、[`distribution`](https://developer.apple.com/documentation/uikit/uistackview/1616233-distribution)、[`alignment`](https://developer.apple.com/documentation/uikit/uistackview/1616243-alignment)、[`spacing`](https://developer.apple.com/documentation/uikit/uistackview/1616225-spacing)和其他属性。
 
 <img title="" src="https://docs-assets.developer.apple.com/published/82128953f6/uistack_hero_2x_04e50947-5aa0-4403-825b-26ba4c1662bd.png" alt="" data-align="center" width="537">
 
-要使用堆栈视图，在您希望编辑的 Storyboard 中打开它。从对象库中拖动水平堆栈视图（Horizontal Stack View）或垂直堆栈视图（Vertical Stack View），并将堆栈视图放置在所需的位置上。接下来，拖动需要放入堆栈视图的内容，将视图或控件放入堆栈视图中。您可以根据需要继续向堆栈中添加视图和控件。Interface Builder 会根据内容调整堆栈的大小。您还可以通过在属性检查器（Attributes inspector）中修改堆栈视图的属性来调整堆栈内容的外观。
+要使用堆栈视图，可以在 Storyboard 中打开它。从对象库中拖动水平堆栈视图（Horizontal Stack View）或垂直堆栈视图（Vertical Stack View），并将堆栈视图放置在需要的位置上。接下来，拖动需要放入堆栈视图的内容，可以将其他视图或控件放入堆栈视图中。您可以根据需要继续向堆栈中添加视图和控件。Interface Builder 会根据内容调整堆栈的大小。您还可以通过在属性检查器（Attributes inspector）中修改堆栈视图的属性来调整堆栈内容的外观。
 
 > 您负责定义堆栈视图的位置以及大小（可选）。然后，堆栈视图会管理其内容的布局和大小。
 {: .prompt-info }
 
 ## 堆栈视图和自动布局
 
-堆栈视图使用自动布局来定位和调整其内部排列视图的大小。堆栈视图会将第一个和最后一个排列视图的边缘与堆栈的轴线对齐。在水平堆栈中，这意味着第一个排列视图的前缘与堆栈的前缘对齐，最后一个排列视图的后缘与堆栈的后缘对齐。在垂直堆栈中，顶部和底部边缘分别与堆栈的顶部和底部边缘对齐。如果将堆栈视图的[`isLayoutMarginsRelativeArrangement`](https://developer.apple.com/documentation/uikit/uistackview/1616220-islayoutmarginsrelativearrangeme)属性设置为`true`，堆栈视图将其内容固定到相关边距而不是边缘。
+堆栈视图使用自动布局来定位和调整其内部排列视图的大小。堆栈视图会将第一个和最后一个视图的边缘与堆栈的轴线对齐。在水平堆栈中，这意味着第一个排列视图的前缘与堆栈的前缘对齐，最后一个排列视图的后缘与堆栈的后缘对齐。在垂直堆栈中，顶部和底部边缘分别与堆栈的顶部和底部边缘对齐。如果将堆栈视图的[`isLayoutMarginsRelativeArrangement`](https://developer.apple.com/documentation/uikit/uistackview/1616220-islayoutmarginsrelativearrangeme)属性设置为`true`，堆栈视图将其内容固定到相关边距而不是边缘。
 
 除了[`UIStackView.Distribution.fillEqually`](https://developer.apple.com/documentation/uikit/uistackview/distribution/fillequally)分布之外，堆栈视图在沿着堆栈的轴线计算大小时使用每个排列视图的[`intrinsicContentSize`](https://developer.apple.com/documentation/uikit/uiview/1622600-intrinsiccontentsize)属性。[`UIStackView.Distribution.fillEqually`](https://developer.apple.com/documentation/uikit/uistackview/distribution/fillequally)会调整所有排列视图的大小，使它们具有相同的大小，并填充堆栈视图沿着其轴线。如果可能，堆栈视图会拉伸所有排列视图以匹配沿着堆栈轴线具有最长固有尺寸的视图。
 
@@ -46,13 +46,13 @@ class UIStackView : UIView
 
 - 沿着堆栈视图的轴线，其适合大小（fitting size）等于所有排列视图的大小之和加上视图之间的间距。
 - 垂直于堆栈视图的轴线，其适合大小等于最大排列视图的大小。
-- 如果将堆栈视图的[`isLayoutMarginsRelativeArrangement`](https://developer.apple.com/documentation/uikit/uistackview/1616220-islayoutmarginsrelativearrangeme)属性设置为`true`，堆栈视图的适合大小将增加以包括边距的空间。
+- 如果将堆栈视图的[`isLayoutMarginsRelativeArrangement`](https://developer.apple.com/documentation/uikit/uistackview/1616220-islayoutmarginsrelativearrangeme)属性设置为`true`，堆栈视图的适合大小将增加边距的空间。
 
 您可以提供额外的约束条件来指定堆栈视图的高度、宽度或两者。在这些情况下，堆栈视图会调整其排列视图的布局和大小，以填充指定的区域。具体的布局方式取决于堆栈视图的属性。有关堆栈视图如何处理额外空间或不足空间的完整描述，请参阅[`UIStackView.Distribution`](https://developer.apple.com/documentation/uikit/uistackview/distribution)和[`UIStackView.Alignment`](https://developer.apple.com/documentation/uikit/uistackview/alignment)枚举。
 
 您还可以基于堆栈视图的第一个或最后一个基线来定位堆栈视图，而不是使用顶部、底部或中心的Y位置。与堆栈视图的适合大小一样，这些基线是根据堆栈视图的内容计算的。
 
-- 对于[`水平堆栈视图forFirstBaselineLayout`](https://developer.apple.com/documentation/uikit/uiview/1622452-forfirstbaselinelayout)和[`forLastBaselineLayout`](https://developer.apple.com/documentation/uikit/uiview/1622633-forlastbaselinelayout)方法都返回最高的视图。如果最高的视图也是一个堆栈视图，则返回在嵌套堆栈视图上调用`forFirstBaselineLayout`或`forLastBaselineLayout`的结果。
+- 对于[`水平堆栈视图forFirstBaselineLayout`](https://developer.apple.com/documentation/uikit/uiview/1622452-forfirstbaselinelayout)和[`forLastBaselineLayout`](https://developer.apple.com/documentation/uikit/uiview/1622633-forlastbaselinelayout)方法都返回高度最高的视图。如果最高的视图也是一个堆栈视图，则返回在嵌套堆栈视图上调用`forFirstBaselineLayout`或`forLastBaselineLayout`的结果。
 - 垂直堆栈视图对于`forFirstBaselineLayout`返回其第一个排列视图，对于`forLastBaselineLayout`返回其最后一个排列视图。如果其中任何一个视图也是堆栈视图，则返回在嵌套堆栈视图上调用`forFirstBaselineLayout`或`forLastBaselineLayout`的结果。
 
 > 基线对齐仅适用于高度与其内在内容大小的高度相匹配的视图。如果视图被拉伸或压缩，基线会出现在错误的位置。
