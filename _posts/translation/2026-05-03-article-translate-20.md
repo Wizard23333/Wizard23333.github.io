@@ -1,5 +1,5 @@
 ---
-title: Apple文档翻译（5）——TN3183: Adding required reason API entries to your privacy manifest
+title: "Apple文档翻译（5）——TN3183: Adding required reason API entries to your privacy manifest"
 author: wizard
 date: 2026-05-03 20:30:00 +0800
 categories: [文档翻译]
