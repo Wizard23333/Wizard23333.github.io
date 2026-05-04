@@ -7,10 +7,10 @@ tags: [文档翻译, UIKit]
 
 ---
 
-> 本文使用chatGPT（gpt-3.5-turbo）翻译，加以部分人工润色排版，如有问题请在评论区指出
+> 本文使用ChatGPT（GPT-3.5 Turbo）翻译，并进行人工润色与排版，如有问题请在评论区指出
 {: .prompt-info }
 
-原文地址：[链接](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources)
+原文地址：[Apple 官方文档](https://developer.apple.com/documentation/uikit/protecting_the_user_s_privacy/requesting_access_to_protected_resources)
 
 # Requesting access to protected resources (请求访问受保护的资源)
 

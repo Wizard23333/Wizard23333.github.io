@@ -7,9 +7,9 @@ tags: [文档翻译]
 
 ---
 
-原文地址：[链接](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api)
+原文地址：[Apple 官方文档](https://developer.apple.com/documentation/bundleresources/privacy_manifest_files/describing_use_of_required_reason_api)
 
-# Describing use of required reason API（描述 requiried reason 的使用）
+# Describing use of required reason API（描述 required reason 的使用）
 
 > 确保您使用的涉及到的 API 符合政策的要求
 
@@ -20,7 +20,7 @@ tags: [文档翻译]
 > 从 2023 年秋季开始，如果您上传到 App Store Connect 的应用程序使用了 required reason API，但是没有在隐私清单文件中描述原因，您将收到一封来自 Apple 的电子邮件。从 2024 年春季开始，如果应用程序在其隐私清单文件中没有对 required reason API 使用的描述，这些应用程序将不会被 App Store Connect 接受。
 {: .prompt-warning }
 
-对于在您的应用程序中或三方 SDK 中使用的每个 required reason API 类别，请您在您的应用程序或者三方 SDK 的隐私清单文件（privacy manifest file）中`NSPrivacyAccessedAPITypes` 数组中添加一个字典，这个字典用于报告您使用这类 API 的原因。如果您在您的应用程序的代码中使用这些 API ，则需要在您的应用程序的隐私清单文件中报告它们。如果您在您的三方 SDK 的代码中使用这些 API，则同样需要在你的三方 SDK 的隐私清单文件中报告它们。您的三方 SDK 不能仅仅依赖使用它的 App，或者其他的该 App 使用过的 SDK来报告你的三方SDK对 required reason API 的使用
+对于在您的应用程序中或三方 SDK 中使用的每个 required reason API 类别，请您在您的应用程序或者三方 SDK 的隐私清单文件（privacy manifest file）中`NSPrivacyAccessedAPITypes` 数组中添加一个字典，这个字典用于报告您使用这类 API 的原因。如果您在您的应用程序的代码中使用这些 API ，则需要在您的应用程序的隐私清单文件中报告它们。如果您在您的三方 SDK 的代码中使用这些 API，则同样需要在你的三方 SDK 的隐私清单文件中报告它们。您的三方 SDK 不能仅仅依赖使用它的 App，或者其他的该 App 使用过的 SDK 来报告你的三方 SDK 对 required reason API 的使用
 
 > 你的应用程序或者三方 SDK，必须声明一个或多个被 Apple 允许的理由来准确的反映您对每个 API，以及调用这些 API 获得数据的使用。您只能将这些 API 和通过这些 API 获得的数据用于已经声明的理由。这些声明的理由必须与您应用程序呈现给用户的功能一致，并且您不得使用这些内容用于跟踪用户。
 {: .prompt-warning }
