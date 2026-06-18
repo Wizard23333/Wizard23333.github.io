@@ -7,6 +7,11 @@
 !.commitlintrc.json
 !.versionrc.json
 !.stylelintrc.json
+# Keep project skills under version control
+!.trae/
+.trae/*
+!.trae/skills/
+!.trae/skills/**
 
 # bundler cache
 _site
